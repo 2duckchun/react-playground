@@ -1,0 +1,28 @@
+body {
+    background-color: black;
+}
+
+.main {
+    text-align: center;
+}
+
+button {
+    margin: 20px;
+}
+
+.book {
+    width: 500px;
+    background-color: aqua;
+    margin: 20px auto;
+    padding: 10px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.page {
+    background-color: white;
+    width: 150px;
+    border: 1px solid black;
+}
