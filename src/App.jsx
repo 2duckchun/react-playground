@@ -1,44 +1,20 @@
 import React, { useState, useRef } from 'react'
+
+import { useSelector } from 'react-redux';
 import './app.css'
 
 function App() {
-  const [emailValue, setEmailValue] = useState('')
-  const [pwValue, setPwValue] = useState('')
-  const emailInput = useRef(null)
-  const pwInput = useRef(null)
-
-  const inputCheck = e => {
-    e.preventDefault()
-    if (emailInput.current.value === "") {
-      alert("이메일을 입력해주세요.")
-      emailInput.current.focus()
-      return
-    }
-    if (pwInput.current.value === "") {
-      alert("비번을 입력해주세요.")
-      pwInput.current.focus()
-      return
-    }
-
-    setEmailValue(emailInput.current.value)
-    setPwValue(pwInput.current.value)
-  }
+  let personName = useSelector((state) => { return state})
+  console.log(personName);
 
   return (
-      <form>
-        <label>
-          이메일 : <input type="email" ref={emailInput} />
-        </label>
-        <label>
-          비밀번호 : <input type="password"  ref={pwInput}/>
-        </label>
-
-        <button type='submit' style={{width: "100px"}} onClick={inputCheck}>
-          로그인
-        </button>
-        <div>입력한 이메일 : {emailValue}</div>
-        <div>입력한 비밀번호 : {pwValue}</div>
-      </form>
+    <div>
+      <h1>리덕스 연습중</h1>
+      <h3>리덕스 store에서 뽑아온 것은 → 
+        <span style={{color:'red'}}>{personName.person}</span> 
+        입니다. 
+      </h3>
+    </div>
   )
 }
 
