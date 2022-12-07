@@ -1,19 +1,23 @@
-import React, { useState, useRef } from 'react'
-
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { countUp, countDown } from './store';
 import './app.css'
 
 function App() {
-  let personName = useSelector((state) => { return state})
-  console.log(personName);
+  const number = useSelector((상태객체) => {return 상태객체.number})
+  const dispatch = useDispatch()
+  const eventCountUp = () => {
+    dispatch(countUp())
+  }
+
+  const eventCountDown = () => {
+    dispatch(countDown())
+  }
 
   return (
     <div>
-      <h1>리덕스 연습중</h1>
-      <h3>리덕스 store에서 뽑아온 것은 → 
-        <span style={{color:'red'}}>{personName.person}</span> 
-        입니다. 
-      </h3>
+      <p>카운트가 증감합니다. <span>{number}</span></p>
+      <button onClick={eventCountUp}>카운트 업</button>
+      <button onClick={eventCountDown}>카운트 다운</button>
     </div>
   )
 }

@@ -1,12 +1,22 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 
-let person = createSlice({
-    name: 'person',
-    initialState: '2DC'
+let number = createSlice({
+    name: 'number',
+    initialState: 0,
+    reducers: {
+        countUp(state) {
+            return state + 1
+        },
+        countDown(state) {
+            return state - 1
+        }
+    }
 })
+
+export const { countUp, countDown } = number.actions
 
 export default configureStore({
     reducer: {
-        person: person.reducer
+        number: number.reducer
     }
 })
