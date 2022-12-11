@@ -1,24 +1,33 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { countUp, countDown } from './store';
+import { Routes, Route, Link } from 'react-router-dom'
 import './app.css'
 
-function App() {
-  const number = useSelector((상태객체) => {return 상태객체.number})
-  const dispatch = useDispatch()
-  const eventCountUp = () => {
-    dispatch(countUp())
-  }
 
-  const eventCountDown = () => {
-    dispatch(countDown())
-  }
+function App() {
 
   return (
     <div>
-      <p>카운트가 증감합니다. <span>{number}</span></p>
-      <button onClick={eventCountUp}>카운트 업</button>
-      <button onClick={eventCountDown}>카운트 다운</button>
+      <Routes>
+        <Route path='/' element={<h1>킹스랜딩</h1>}></Route>
+        <Route path='/detail' element={<Detail/>}></Route>
+        <Route path='/about' element={<About/>}></Route>
+        <Route path='/other' element={<div>기타 페이지 입니다.</div>}></Route>
+      </Routes>
+      <h1><Link to="/detail">디테일 페이지</Link></h1>
+      <h1><Link to="/about">어바웃 페이지</Link></h1>
+      <h1><Link to="/other">기타 페이지</Link></h1>
     </div>
+  )
+}
+
+function Detail() {
+  return (
+    <h1>디테일 페이지 입니다.</h1>
+  )
+}
+
+function About() {
+  return (
+    <h1>어바웃 페이지 입니다.</h1>
   )
 }
 
