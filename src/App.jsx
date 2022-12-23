@@ -1,38 +1,24 @@
-import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
+import { useState } from 'react'
 import './app.css'
-
+import Modification from './Modification'
 
 function App() {
-  const navigate = useNavigate()
+  const [상품명, set상품명] = useState(null)
+  const [가격, set가격] = useState(null)
+  const [판매링크, set판매링크] = useState(null)
+  const [스위치, set스위치] = useState(false)
 
   return (
     <div>
-      <h1 onClick={() => navigate('/detail')}>디테일 페이지</h1>
-      <h1 onClick={() => navigate('/about')}>어바웃 페이지</h1>
-      <h1 onClick={() => navigate('/other')}>기타 페이지</h1>
-      <h1 onClick={() => navigate(-1)}>뒤로</h1>
-      <h1 onClick={() => navigate(1)}>앞으로</h1>
-      <Routes>
-        <Route path='/' element={<h1>킹스랜딩</h1>}></Route>
-        <Route path='/detail' element={<Detail/>}></Route>
-        <Route path='/about' element={<About/>}></Route>
-        <Route path='/other' element={<div>기타 페이지 입니다.</div>}></Route>
-        <Route path='*' element={<div>404 페이지입니다.</div>}></Route>
-      </Routes>
-
+      <p>상품명 : {스위치 && 상품명}</p>
+      <p>가격 : {스위치 && 가격}</p>
+      <p>판매 링크 : {스위치 && 판매링크}</p>
+      <Modification set상품명={set상품명} set가격={set가격} set판매링크={set판매링크} />
+      <button onClick={() => {
+        const 복사본 = 스위치
+        set스위치(!복사본)
+      }}>전송</button>
     </div>
-  )
-}
-
-function Detail() {
-  return (
-    <h1>디테일 페이지 입니다.</h1>
-  )
-}
-
-function About() {
-  return (
-    <h1>어바웃 페이지 입니다.</h1>
   )
 }
 
